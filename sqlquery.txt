@@ -1,0 +1,186 @@
+SELECT 
+post_data.post_time as time,
+post_data.content_type as type,
+post_data.heading as heading,
+post_data.content as content,
+post_data.num_likes as likes,
+post_data.num_comment as comment,
+post_data.num_reblog as reblog,
+users.username as username,
+user_add_data.name as name,
+user_add_data.image_url as imageurl
+FROM users JOIN post_data JOIN user_add_data JOIN user_user_rel 
+ON users.user_id=user_user_rel.user1_id AND
+user_user_rel.user2_id=users.user_id AND
+post_data.origin_id = users.user_id AND
+user_user_rel.user2_id=post_data.origin_id AND
+user_add_data.user_id = users.user_id
+WHERE
+user_user_rel.relation = "F"
+ORDER BY 
+post_data.post_time DESC
+
+
+SELECT us1.email, us2.email FROM 
+users us1 JOIN user_user_rel uur ON us1.user_id = uur.user1_id JOIN users us2 ON us2.user_id = uur.user2_id;
+
+SELECT uad1.name, uad2.name FROM
+user_add_data uad1 JOIN users us1  ON uad1.user_id = us1.user_id 
+JOIN user_user_rel uur ON us1.user_id = uur.user1_id 
+JOIN users us2 ON us2.user_id = uur.user2_id 
+JOIN user_add_data uad2 ON us2.user_id = uad2.user_id
+
+SELECT uad1.name, uad2.name FROM
+user_add_data uad1 JOIN users us1  ON uad1.user_id = us1.user_id 
+JOIN user_user_rel uur ON us1.user_id = uur.user1_id 
+JOIN users us2 ON us2.user_id = uur.user2_id 
+JOIN user_add_data uad2 ON us2.user_id = uad2.user_id
+WHERE us1.user_id=32
+
+SELECT pd.heading , pd.origin_id, uad2.name FROM
+user_add_data uad1 JOIN users us1 ON uad1.user_id = us1.user_id 
+JOIN user_user_rel uur ON us1.user_id = uur.user1_id 
+JOIN users us2 ON us2.user_id = uur.user2_id 
+JOIN user_add_data uad2 ON us2.user_id = uad2.user_id JOIN post_data pd ON pd.origin_id = us2.user_id
+WHERE us1.user_id=32
+
+
+SELECT 
+pd.post_time as time,
+pd.content_type as type,
+pd.heading as heading,
+pd.content as content,
+pd.num_likes as likes,
+pd.num_comment as comment,
+pd.num_reblog as reblog,
+us2.username as username,
+uad2.name as name,
+uad2.image_url as imageurl
+FROM 
+user_add_data uad1 JOIN users us1 ON uad1.user_id = us1.user_id 
+JOIN user_user_rel uur ON us1.user_id = uur.user1_id 
+JOIN users us2 ON us2.user_id = uur.user2_id 
+JOIN user_add_data uad2 ON us2.user_id = uad2.user_id JOIN post_data pd ON pd.origin_id = us2.user_id
+WHERE (us1.user_id=30) AND (uur.relation = "F" OR uur.relation = "S")
+ORDER BY pd.post_time DESC
+
+// a person is friend of himself
+
+
+SELECT 
+    pd.post_time as time,
+    pd.content_type as type,
+    pd.heading as heading,
+    pd.content as content,
+    pd.num_likes as likes,
+    pd.num_comment as comment,
+    pd.num_reblog as reblog,
+    us2.username as username,
+    gp.grpname as groupname,
+    uad.name as name,
+    uad.image_url as imageurl
+    FROM 
+    users us1 JOIN grp_user_rel gur ON us1.user_id = gur.user_id
+    JOIN grps gp ON gur.grp_id = gp.grp_id 
+    JOIN post_data pd ON pd.where_id = gp.grp_id
+    JOIN users us2 ON pd.origin_id = us2.user_id
+    JOIN user_add_data uad ON us2.user_id = uad.user_id
+   
+    WHERE (us1.user_id = 30) 
+    ORDER BY pd.post_time DESC
+
+
+    INSERT INTO post_data (origin_id, content_type, heading, content, num_likes, num_comment, num_reblog, where_id)
+VALUES(33, "I", "POST IMAGE TYPE 1", "random_image/art3.jpg", 0,0,0,10);
+
+
+SELECT
+us2.username as username,
+uur.relation_time as rel_time,
+uad2.name as fri_name,
+uad2.image_url as iamgeurl
+FROM users us1 JOIN user_user_rel uur ON us1.user_id = uur.user1_id 
+JOIN users us2 ON us2.user_id = uur.user2_id
+JOIN user_add_data uad2 ON uad2.user_id = us2.user_id
+WHERE (us1.user_id = 30) AND (uur.relation = "F")
+ORDER BY uur.relation_time DESC
+
+INSERT INTO messages (user1_id, user2_id, last_message) VALUES 
+(30,33, "I got addicted to a loosing game, ohoo ohoooh loving you is a loosing game");
+
+SELECT
+uad.name,
+mg.last_message,
+mg.message_time
+FROM 
+users us1 JOIN messages mg ON us1.user_id = mg.user1_id 
+JOIN users us2 ON mg.user2_id = us2.user_id
+JOIN user_add_data uad ON us2.user_id = uad.user_id
+ORDER BY mg.message_time DESC;
+
+SELECT
+nf.notify_time,
+nf.notification,
+uad.image_url
+
+FROM users us1 JOIN notification nf ON us1.user_id = nf.user1_id
+JOIN users us2 ON us2.user_id = nf.user2_id
+JOIN user_add_data uad ON us2.user_id = uad.user_id
+WHERE us1.user_id=30
+ORDER BY nf.notify_id DESC
+
+SELECT 
+gp.grp_id as group_id,
+gp.grpname as groupname,
+gp.image_url as imageurl
+FROM users us JOIN grp_user_rel gur ON us.user_id = gur.user_id
+JOIN grps gp ON gp.grp_id = gur.grp_id
+WHERE us.user_id=30
+ORDER BY gur.relation_time
+
+SELECT
+gp.image_url as image_url,
+gp.grpname as grpname,
+pd.post_time as pd_time,
+pd.content_type as pd_type,
+pd.heading as pd_head,
+pd.content as pd_content,
+pd.num_likes as num_likes,
+pd.num_comment as num_comment,
+pd.num_reblog as num_reblog
+FROM users us JOIN post_data pd ON us.user_id = pd.origin_id
+JOIN grps gp ON pd.where_id = gp.grp_id WHERE us.user_id = 30
+
+SELECT 
+        users.username as username, 
+        users.email as email,
+        users.user_join_time as join_time,
+        users.num_friend as num_friend, 
+        users.num_follower as num_follower, 
+        users.num_following as num_following,
+        user_add_data.image_url as image_url,
+        user_add_data.name as main_name,
+        users.num_post as num_post,
+        users.num_post_like as num_p_like,
+        users.num_comment_like as num_c_like,
+        users.num_comment as num_comment
+        FROM users JOIN user_add_data ON 
+        users.user_id = user_add_data.user_id
+         WHERE users.user_id = 30s
+
+         UPDATE post_data SET num_likes = num_likes + 1 WHERE post_id = 47
+
+         DELETE FROM post_vote WHERE (user_id = 30 AND post_id = 47)
+
+
+         SELECT 
+us1.user_id,
+us1.username,
+us1.user_join_time,
+us1.image_url,
+uur.relation
+FROM users us1 JOIN users us2
+LEFT JOIN user_user_rel uur ON us1.user_id = uur.user1_id AND uur.user2_id = us2.user_id
+WHERE us1.user_id = 43 AND us2.user_id = 1
+
+ALTER TABLE grps ADD grp_des VARCHAR (128) DEFAULT "Welcome to the group";

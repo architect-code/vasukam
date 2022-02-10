@@ -1,0 +1,107 @@
+<script>
+ var url = "user_check.js";
+$.getScript(url);
+</script>
+
+<script>
+  
+
+    window.onclick = function(event) {
+
+    var buto = document.getElementById("sug_pop_pass");
+    var butto = document.getElementById("sug_pop");
+    if (event.target == buto) {
+        document.getElementById("sug_pop_pass").style.display = "none";
+        var butt = document.getElementById("suggestion_button_pass").firstChild;
+        butt.classList.remove("fa-times-circle");
+        butt.classList.add("fa-question-circle");
+        
+    }
+    if (event.target == butto) {
+        document.getElementById("sug_pop").style.display = "none";
+        var butt = document.getElementById("suggestion_button_user").firstChild;
+        butt.classList.remove("fa-times-circle");
+        butt.classList.add("fa-question-circle");
+        
+    }
+
+}
+
+    function user_sug(){
+        document.getElementById("sug_pop").style.display = "flex";
+        var butt = document.getElementById("suggestion_button_user").firstChild;
+        // var butt = document.getElementsByClassName("fa-question-circle")[0];
+        butt.classList.remove("fa-question-circle");
+        butt.classList.add("fa-times-circle");
+    }
+
+    function pass_sug(){
+        document.getElementById("sug_pop_pass").style.display = "flex";
+        var butt = document.getElementById("suggestion_button_pass").firstChild;
+        // var butt = document.getElementsByClassName("fa-question-circle")[0];
+        butt.classList.remove("fa-question-circle");
+        butt.classList.add("fa-times-circle");
+    }
+
+
+
+
+</script>
+
+
+
+
+<div class="six_signup_form form_area">
+    <form>
+   
+    <!-- <input type="text" name="first_name" id="first_name" pattern="[A-Za-z ]+" placeholder="First Name" required></br>
+    <input type="text" name="last_name" id="last_name" pattern="[A-Za-z]+" placeholder="Last Name"></br> -->
+    <input type="email" name="email" id="email" placeholder="Email address">
+    <input type="text" name="username" id="username" placeholder="Username">
+    <input type="password" name="password" id="password" placeholder="Password">
+    <button class="sub" type="button" id = "signup1">Sign Up</button>
+</form>
+
+<!-- <span id="suggestion_box"></span> -->
+<span id="error_message"></span>
+<span id="suggestion_button_user"><i onclick="user_sug()" class="far fa-question-circle"></i></span>
+<span id="suggestion_button_pass"><i onclick="pass_sug()" class="far fa-question-circle"></i></span>
+<div id="sug_pop">
+    
+        <ul>
+        <lh>5-15 Characters</lh></br>
+        <lh>Combination of any</lh>
+    
+
+        <li>Upper case alphabets</li>
+        <li>Lower case alphabets</li>
+        <li>Numbers</li>
+        <li>Underscrore(_)
+            </li>
+        </ul>
+        
+    
+</div>
+
+<div id="sug_pop_pass">
+    
+    <ul>
+    <lh>8-20 Characters</lh></br>
+    <lh>Combination of any</lh>
+    <li>Upper case alphabets</li>
+    <li>Lower case alphabets</li>
+    <li>Numbers</li>
+    <li>Special Characters (@$!%*?&)
+        </li>
+    </ul>
+    
+
+</div>
+<!-- <div class="six_tnc">
+    By signing up you accepts the terms  contditions of vasukam.
+
+</div> -->
+
+<!-- <i class="far fa-times-circle"></i> -->
+
+</div>

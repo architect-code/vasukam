@@ -1,0 +1,18 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+    var url = "add_data.js";
+   $.getScript(url);
+</script>
+
+
+<div class="seven_add_details form_area">
+    <form>
+    <span id="error_message"></span>
+    <input type="text" name="name" id="name"  placeholder="Name">
+    <!-- <input type="text" name="last_name" id="last_name" pattern="[A-Za-z]+" placeholder="Last Name"> -->
+    <input type="text" name="dob" id="dob" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Date of birth" required >
+    <button class="sub" type="button" id = "signup2">Submit</button>
+</form>
+
+</div>

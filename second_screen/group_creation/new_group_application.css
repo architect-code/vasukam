@@ -1,0 +1,164 @@
+@media screen and (max-width: 1650px){
+
+    :root {
+        --dark1:#000000;
+        --dark2:#0A0A0A;
+        --dark3:#131313;
+        --dark4:#1e1e1e;
+        --gray1:#636668;
+        --gray2:#5e6163;
+        --gray3: #525455;
+        --white1:#AFB2B4;
+        --white2:#D3D7DA;
+        --blue1:#001935;
+        --green: rgb(0, 207, 53);
+        /* --blue2: rgb(0, 184, 255); */
+        --blue2:#0865B2;
+        
+        --navy: rgb(0, 25, 53);
+        /* --blue3: #0865B2; */
+        --blue3:#368FE9;
+
+
+      }
+
+
+
+
+    html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, div, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+html{
+    font-size: 3vw;
+}
+
+body{
+    background-color: var(--dark1);
+}
+
+.ng_one_top_bar{
+    height: 10vw;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    padding-left: 2vw;
+    flex-direction: row;
+    box-sizing: border-box;
+    border-bottom: 1px solid var(--dark3);
+    /* padding-right: 2vw; */
+
+}
+.ng_three_cancel{
+    height: 8vw;
+    width: 8vw;
+    border-radius: 4vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+
+}
+
+.ng_four_page_head{
+    margin-left: 4vw;
+    color: white;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+
+
+}
+
+.ng_two_main_body{
+    display: flex;
+    width: 100vw;
+    height: calc(100vh - 10vw);
+
+    align-items: center;
+    /* justify-content: center; */
+    flex-direction: column;
+
+}
+
+.ng_two_main_body form{
+    margin-top: 5vw;
+    display: flex;
+    /* position: fixed; */
+    /* height: 90vw; */
+    width: 80vw;
+    flex-direction: column;
+    /* justify-content: space-between; */
+
+}
+
+.ng_two_main_body form input{
+    outline: none;
+    border: none;
+    font-size: 1.2rem;
+    padding: 1vw 2vw 1vw 2vw;
+    border-radius: 1vw;
+    background-color: var(--dark4);
+    color: var(--gray1);
+    margin-bottom: 1vw;
+    
+
+
+}
+
+.ng_two_main_body form textarea{
+    outline: none;
+    border: none;
+    font-size: 1rem;
+    padding: 1vw 2vw 1vw 2vw;
+    border-radius: 1vw;
+    background-color: var(--dark4);
+    color: var(--gray1);
+    resize: none;
+    margin-bottom: 4vw;
+
+}
+
+.ng_two_main_body form button{
+    outline: none;
+    border: none;
+    font-size: 1.5rem;
+    padding: 2vw 2vw 2vw 2vw;
+    border-radius: 1vw;
+    background-color: var(--blue2);
+    color: white;
+
+}
+
+.ng_error_message{
+    width: 80vw;
+    padding: 1vw 2vw 1vw 2vw;
+    font-size: 1rem;
+    color: red;
+    background-color: var(--dark3);
+    margin-top: 5vw;
+    border-radius: 2vw;
+    display: none;
+    /* height: ; */
+}
+
+}

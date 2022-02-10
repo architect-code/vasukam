@@ -1,0 +1,11 @@
+F => Friend (aFb, bFa => a is friend of b anc vice versa, both must exist)
+A => Following (aAb => a is following b or a is follower of b)
+B => Follower (aBb => b is following a or b is follower of a )
+C => Connect request (aCb => a sent friend request to b and a is following b)
+D => Connect request received (aDb => a received friend request from b and b is follwing a)
+E => Connect request without follwoing (aEb => a sent friend request to b)
+G => Connect request received without follwoing (aGb => a received friend request from b)
+H => connect request to follower (aHb a follows b, b follows a, a sent friend request to b)
+I => connect request received by follower (aIb a follow b, b follow a, b sent friend request to a)
+Follower = B, D, F
+Follwing = A, C, F

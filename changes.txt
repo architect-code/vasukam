@@ -1,0 +1,5 @@
+new tags
+<canvas> : for images
+<title> : for page title
+duke university simple image library
+stenography??
